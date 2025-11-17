@@ -1,7 +1,4 @@
-# Airport Security System - Assignment 1 Report
-**Student ID:** 01642049  
-**Course:** Cloud Computing 2025W, University of Vienna
-
+# Airport Security System
 ---
 
 ## 1. System Overview
@@ -243,7 +240,3 @@ Successfully deployed a scalable microservices-based airport security system on 
 - `grafana-namespace-a1.png` - Namespace-specific metrics
 
 ---
-
-**End of Report**  
-*Student ID: 01642049*  
-*University of Vienna - Cloud Computing 2025W*
