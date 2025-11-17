@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: face-recognition
+  namespace: a1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: face-recognition
+  template:
+    metadata:
+      labels:
+        app: face-recognition
+    spec:
+      containers:
+        - name: face-recognition
+          image: ccuni/face-recognition-service-2025w
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "1Gi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: face-recognition
+  namespace: a1
+spec:
+  selector:
+    app: face-recognition
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

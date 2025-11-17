@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: section
+  namespace: a1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: section
+  template:
+    metadata:
+      labels:
+        app: section
+    spec:
+      containers:
+        - name: section
+          image: ccuni/section-service-2025w
+          ports:
+            - containerPort: 80
+          env:
+            - name: EXTERNAL_MONGODB_URL
+              value: ""
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: section
+  namespace: a1
+spec:
+  selector:
+    app: section
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

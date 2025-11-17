@@ -1,0 +1,55 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: a1-ingress
+  namespace: a1
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: "34.116.166.55.nip.io"
+      http:
+        paths:
+          - path: /collector(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: collector
+                port:
+                  number: 80
+          - path: /image-analysis(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: image-analysis
+                port:
+                  number: 80
+          - path: /face-recognition(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: face-recognition
+                port:
+                  number: 80
+          - path: /section(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: section
+                port:
+                  number: 80
+          - path: /alert(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: alert
+                port:
+                  number: 80
+          - path: /camera(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: camera
+                port:
+                  number: 80

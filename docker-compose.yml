@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  collector:
+    build: ./collector
+    ports:
+      - "31700:80"
+
+  camera:
+    image: ccuni/camera-service-2025w
+    ports:
+      - "31100:80"
+
+  image-analysis:
+    image: ccuni/image-analysis-service-2025w
+    ports:
+      - "31200:80"
+
+  face-recognition:
+    image: ccuni/face-recognition-service-2025w
+    ports:
+      - "31300:80"
+
+  section:
+    image: ccuni/section-service-2025w
+    ports:
+      - "31400:80"
+
+  alert:
+    image: ccuni/alert-service-2025w
+    ports:
+      - "31500:80"
